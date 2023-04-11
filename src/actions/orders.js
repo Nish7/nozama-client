@@ -21,7 +21,7 @@ export const submitOrder = ({ dishes, tableNum }) => async (dispatch) => {
 
 		const body = JSON.stringify({ dishes, tableNum });
 
-		const res = await axios.post('http://localhost:3001/api/order', body, config);
+		const res = await axios.post('https://nozama-server.vercel.app/api/order', body, config);
 
 		dispatch(
 			setAlert(
@@ -41,7 +41,7 @@ export const submitOrder = ({ dishes, tableNum }) => async (dispatch) => {
 
 export const getOrders = (date) => async (dispatch) => {
 	try {
-		const res = await axios.get(`http://localhost:3001/api/order?date=${date}`);
+		const res = await axios.get(`https://nozama-server.vercel.app/api/order?date=${date}`);
 		dispatch({ type: GET_ORDERS, payload: res.data });
 	} catch (err) {
 		dispatch({ type: ORDER_FAIL });
@@ -62,7 +62,7 @@ export const changeStatus = (id, status) => async (dispatch) => {
 
 		const body = { status };
 
-		const res = await axios.put(`http://localhost:3001/api/order/${id}/status`, body, config);
+		const res = await axios.put(`https://nozama-server.vercel.app/api/order/${id}/status`, body, config);
 		dispatch({ type: STATUS_UPDATE, payload: res.data });
 	} catch (err) {
 		dispatch({ type: ORDER_ERROR });

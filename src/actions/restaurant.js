@@ -4,7 +4,7 @@ import { setAlert } from './alert';
 
 export const getRestaurant = () => async (dispatch) => {
 	try {
-		const res = await axios.get('http://localhost:3001/api/restaurant');
+		const res = await axios.get('https://nozama-server.vercel.app/api/restaurant');
 		dispatch({ type: GET_RESTAURANT, payload: res.data });
 	} catch (err) {
 		dispatch({ type: RESTAURANT_ERROR });
@@ -21,7 +21,7 @@ export const updateRestaurant = (newCred) => async (dispatch) => {
 
 		const body = { ...newCred };
 
-		const res = await axios.post('http://localhost:3001/api/restaurant', body, config);
+		const res = await axios.post('https://nozama-server.vercel.app/api/restaurant', body, config);
 		dispatch(setAlert('Restaurant Updated', 'success'));
 		dispatch({ type: UPDATE_RESTAURANT, payload: res.data });
 	} catch (err) {

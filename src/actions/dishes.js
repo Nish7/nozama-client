@@ -14,7 +14,7 @@ export const getDishes = () => async (dispatch) => {
 	dispatch({ type: DISH_CLEAR });
 
 	try {
-		const res = await axios.get('http://localhost:3001/api/product');
+		const res = await axios.get('https://nozama-server.vercel.app/api/product');
 		dispatch({ type: GET_DISHES, payload: res.data });
 	} catch (err) {
 		dispatch({ type: DISH_ERROR });
@@ -23,7 +23,7 @@ export const getDishes = () => async (dispatch) => {
 
 export const getDish = (id) => async (dispatch) => {
 	try {
-		const res = await axios.get(`http://localhost:3001/api/product/${id}`);
+		const res = await axios.get(`https://nozama-server.vercel.app/api/product/${id}`);
 		dispatch({ type: GET_DISH, payload: res.data });
 	} catch (err) {
 		dispatch({ type: DISH_ERROR });
@@ -40,7 +40,7 @@ export const addDish = (newDish, history) => async (dispatch) => {
 
 		const body = { ...newDish };
 
-		const res = await axios.post('http://localhost:3001/api/product', body, config);
+		const res = await axios.post('https://nozama-server.vercel.app/api/product', body, config);
 		dispatch({ type: ADD_DISH, payload: res.data });
 		dispatch(setAlert('New Product Added', 'success'));
 		history.push('/admin/products');
@@ -65,7 +65,7 @@ export const updateDish = (dish, id) => async (dispatch) => {
 
 		const body = { ...dish };
 
-		const res = await axios.put(`http://localhost:3001/api/product/${id}`, body, config);
+		const res = await axios.put(`https://nozama-server.vercel.app/api/product/${id}`, body, config);
 		dispatch({ type: UPDATE_DISH, payload: res.data });
 		dispatch(setAlert('Product Updated!', 'success'));
 	} catch (err) {
@@ -81,7 +81,7 @@ export const updateDish = (dish, id) => async (dispatch) => {
 
 export const removeDish = (dishId, history) => async (dispatch) => {
 	try {
-		await axios.delete(`http://localhost:3001/api/product/${dishId}`);
+		await axios.delete(`https://nozama-server.vercel.app/api/product/${dishId}`);
 		dispatch({ type: REMOVE_DISH, payload: dishId });
 		dispatch(setAlert('Product Removed', 'dark'));
 	} catch (err) {

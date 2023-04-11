@@ -30,7 +30,7 @@ export const loadUser = () => async (dispatch) => {
 	}
 
 	try {
-		const res = await axios.get('http://localhost:3001/api/auth');
+		const res = await axios.get('https://nozama-server.vercel.app/api/auth');
 		dispatch({ type: GET_USER, payload: res.data });
 	} catch (err) {
 		dispatch({ type: USER_ERROR });
@@ -47,7 +47,7 @@ export const loginUser = ({ email, password }) => async (dispatch) => {
 
 		const body = { email, password };
 
-		const res = await axios.post('http://localhost:3001/api/auth', body, config);
+		const res = await axios.post('https://nozama-server.vercel.app/api/auth', body, config);
 		dispatch({ type: ADMIN_SUCCESS, payload: res.data.token });
 		dispatch(loadUser());
 		dispatch(setAlert('Admin Logged in!', 'success', 3000));

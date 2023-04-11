@@ -13,7 +13,7 @@ import { setAlert } from './alert';
 export const getCategories = () => async (dispatch) => {
 	dispatch({ type: CLEAR_CATEGORY });
 	try {
-		const res = await axios.get('http://localhost:3001/api/category');
+		const res = await axios.get('https://nozama-server.vercel.app/api/category');
 		dispatch({ type: GET_CATEGORIES, payload: res.data });
 	} catch (err) {
 		dispatch({ type: CATEGORY_ERROR });
@@ -30,7 +30,7 @@ export const updateCategory = (updateCategory, id) => async (dispatch) => {
 
 		const body = { ...updateCategory };
 
-		const res = await axios.put(`http://localhost:3001/api/category/${id}`, body, config);
+		const res = await axios.put(`https://nozama-server.vercel.app/api/category/${id}`, body, config);
 		dispatch({ type: UPDATE_CATEGORY, payload: res.data });
 		dispatch(setAlert('Category Updated!', 'success'));
 	} catch (err) {
@@ -46,7 +46,7 @@ export const updateCategory = (updateCategory, id) => async (dispatch) => {
 
 export const removeCategory = (categoryId) => async (dispatch) => {
 	try {
-		await axios.delete(`http://localhost:3001/api/category/${categoryId}`);
+		await axios.delete(`https://nozama-server.vercel.app/api/category/${categoryId}`);
 		dispatch({ type: REMOVE_CATEGORY, payload: categoryId });
 		dispatch(setAlert('Category Removed', 'dark'));
 	} catch (err) {
@@ -62,7 +62,7 @@ export const removeCategory = (categoryId) => async (dispatch) => {
 
 export const getCategory = (id) => async (dispatch) => {
 	try {
-		const res = await axios.get(`http://localhost:3001/api/category/${id}`);
+		const res = await axios.get(`https://nozama-server.vercel.app/api/category/${id}`);
 		dispatch({ type: GET_CATEGORY, payload: res.data });
 	} catch (err) {
 		dispatch({ type: CATEGORY_ERROR });
@@ -79,7 +79,7 @@ export const addCategory = (newCategory, history) => async (dispatch) => {
 
 		const body = { ...newCategory };
 
-		const res = await axios.post('http://localhost:3001/api/category', body, config);
+		const res = await axios.post('https://nozama-server.vercel.app/api/category', body, config);
 		dispatch({ type: ADD_CATEGORY, payload: res.data });
 		dispatch(setAlert('New Category Added', 'success'));
 		history.push('/admin/categories');
