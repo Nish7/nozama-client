@@ -97,7 +97,7 @@ const Menu = ({
 				: filteredDishes}
 
 			{tray.items && tray.items.length > 0 && (
-				<Link to='/tray'>
+				<Link to='/cart'>
 					<div className='sticky'>
 						<button className='btn btn-dark btn-lg'>
 							Place Order <br />
