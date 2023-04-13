@@ -42,7 +42,7 @@ const PastOrder = ({ order, menu, reorder }) => {
       </div>
       <div className="order-section past-order-amount">
         <p className="past-sub-header">Total Amount:</p>
-        <p>₹{order.totalPrice}</p>
+        <p>${order.totalPrice}</p>
       </div>
 
       {reorderAvalaible && (

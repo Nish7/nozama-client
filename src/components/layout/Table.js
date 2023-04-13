@@ -1,33 +1,33 @@
-import React, { Fragment, useState } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { setTable } from '../../actions/auth';
-import { withRouter } from 'react-router-dom';
+import React, { Fragment, useState } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { setTable } from "../../actions/auth";
+import { withRouter } from "react-router-dom";
 
 const Table = ({ tableNum, setTable, history }) => {
-	const [formData, setFormData] = useState(tableNum);
+  const [formData, setFormData] = useState(tableNum);
 
-	const onChange = (e) => {
-		setFormData(e.target.value);
-	};
+  const onChange = (e) => {
+    setFormData(e.target.value);
+  };
 
-	const onSubmit = (e) => {
-		setTable(formData);
-		history.push('/catalog');
-	};
+  const onSubmit = (e) => {
+    setTable(10);
+    history.push("/catalog");
+  };
 
-	return (
-		<Fragment>
-			<h1 className='head-center'>Table Number</h1>
-			<form className='form form-table' onSubmit={onSubmit}>
-				<input onChange={onChange} value={formData} type='number' min='0' />
+  return (
+    <Fragment>
+      <h1 className="head-center">User ID</h1>
+      <form className="form form-table" onSubmit={onSubmit}>
+        <input onChange={onChange} value={formData} type="text" min="0" />
 
-				<button className='btn btn-light'>
-					<i className='fas fa-chevron-right' style={{ fontSize: '1.5em' }}></i>
-				</button>
-			</form>
+        <button className="btn btn-light">
+          <i className="fas fa-chevron-right" style={{ fontSize: "1.5em" }}></i>
+        </button>
+      </form>
 
-			{/* <div className='table-numbers'>
+      {/* <div className='table-numbers'>
 				<div className='tableNum'>1</div>
 				<div className='tableNum'>2</div>
 				<div className='tableNum'>3</div>
@@ -43,13 +43,13 @@ const Table = ({ tableNum, setTable, history }) => {
 				<div className='tableNum'>14</div>
 				<div className='tableNum'>15</div>
 			</div> */}
-		</Fragment>
-	);
+    </Fragment>
+  );
 };
 
 Table.propTypes = {
-	tableNum: PropTypes.string.isRequired,
-	setTable: PropTypes.func.isRequired,
+  tableNum: PropTypes.string.isRequired,
+  setTable: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({ tableNum: state.auth.tableNum });

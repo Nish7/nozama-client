@@ -138,7 +138,7 @@ const Navbar = ({
       <div className="container-fluid">
         <Link
           className="navbar-brand"
-          to={!isAuthenticated ? "/" : "/admin/dashboard"}
+          to={!isAuthenticated ? "/catalog" : "/admin/dashboard"}
         >
           {!restaurant || !restaurant.name ? "" : restaurant.name}
         </Link>

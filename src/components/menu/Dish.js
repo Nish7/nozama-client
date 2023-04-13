@@ -8,7 +8,7 @@ import {
 } from "../../actions/tray";
 
 function Dish({
-  dish: { veg, dishName: name, _id: id, price, jain, vegan, featured },
+  dish: { veg, dishName: name, _id: id, price, jain, vegan, featured, image },
   addToTray,
   addQuantity,
   removeQuantity,
@@ -20,7 +20,7 @@ function Dish({
   } ${jain || vegan ? "Available)" : ""}`;
 
   let trayButtons = "";
-
+  console.log(image);
   const foundItem = items.find((item) => item.id === id);
 
   if (foundItem) {
@@ -44,6 +44,7 @@ function Dish({
   } else {
     trayButtons = (
       <div className="food-cart">
+        <p>${price}</p>
         <button
           onClick={(e) => addToTray(id)}
           className="btn btn-outline-dark btn-cart"
@@ -58,16 +59,13 @@ function Dish({
     <div>
       <div className="food">
         <div className="food-info">
+          <img
+            src={image}
+            alt=""
+            width="100px"
+            style={{ marginRight: "1rem" }}
+          />
           <h4>
-            <span>
-              <i
-                style={{
-                  color: veg ? "green" : "red",
-                  fontSize: "12px",
-                }}
-                className="fas fa-circle"
-              ></i>
-            </span>
             {name}
             {featured && (
               <span>
@@ -82,10 +80,7 @@ function Dish({
               </span>
             )}
           </h4>
-          <small>{dishOptions}</small>
-          <p>${price}</p>
         </div>
-
         {trayButtons}
       </div>
     </div>
